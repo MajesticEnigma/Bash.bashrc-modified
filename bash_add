@@ -1,0 +1,43 @@
+)#===============================================================================
+#                           Bash Modification
+#
+#                       Author : Cahyo Hertanto
+#               Powered By: Secureinstuments.blogspot.com
+#                 Contact Me: Cahyo Hertanto@gmail.com
+#===============================================================================
+
+# /--------------- Variables -----------------------/
+tanggal=`date "+%d.%m.%Y"`
+jam=`date "+%H:%M"`
+h=`hostname`
+u=`whoami`
+dist=`awk '{print $1 " " $2}' /etc/issue`
+ver=`awk '{print $3}' /etc/issue`
+os=`uname -o`
+kver=`uname -r -i`
+
+# /--------------- Banner -------------------------/
+banner(){
+tput clear
+tput setaf 6
+echo " ============================================================================="
+tput cup 0 33
+tput setaf 3
+echo " "$dist $ver" "
+tput setaf 7
+echo " Hostname         :" $h
+tput cup 1 35
+echo " User             :" $u
+echo " Date             :" $tanggal
+tput cup 2 35
+echo " Time             :" $jam
+echo " Operating System :" $os
+tput cup 3 35
+echo " Kernel Version   :" $kver
+tput setaf 6
+echo " ============================================================================="
+echo""
+tput sgr0
+}
+
+banner
